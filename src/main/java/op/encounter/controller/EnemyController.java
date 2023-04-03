@@ -7,25 +7,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import op.encounter.repository.MonsterRepository;
+import op.encounter.repository.EnemyRepository;
 
 @RestController
-public class MonsterController {
+public class EnemyController {
     
     @Autowired
-    private MonsterRepository repository;
+    private EnemyRepository repository;
 
-    @GetMapping("/monsters")
+    @GetMapping("/enemies")
     ResponseEntity<?> getAllMonsters() {
         return ResponseEntity.status(HttpStatus.OK).body(repository.findAll());
     }
 
-    @GetMapping("/monster/{id}")
+    @GetMapping("/enemy/{id}")
     ResponseEntity<?> getMonsterById(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(repository.findById(id));
     }
 
-    @GetMapping("/monsters/{type}")
+    @GetMapping("/enemies/{type}")
     ResponseEntity<?> getMonstersByType(@PathVariable String type) {
         return ResponseEntity.status(HttpStatus.OK).body(repository.findMonstersByType(type));
     }
